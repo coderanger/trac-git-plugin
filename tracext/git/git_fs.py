@@ -631,7 +631,7 @@ class GitChangeset(Changeset):
         Changeset.__init__(self, repos, rev=sha, message=msg, author=user_, date=time_)
 
     def __repr__(self):
-        return '<GitChangeset %r %s>'%(self.repos, self.rev)
+        return '<GitChangeset %s>'%(self.rev,)
 
     def get_properties(self):
         properties = {}
