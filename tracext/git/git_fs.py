@@ -687,9 +687,9 @@ class GitChangeset(Changeset):
 class GitwebProjectsRepositoryProvider(Component):
     implements(IRepositoryProvider)
 
-    projects_list = PathOption('git', 'projects_list', 'Path to a gitweb-formatted projects.list')
-    projects_base = PathOption('git', 'projects_base', 'Path to the base of your git projects')
-    projects_url = Option('git', 'projects_url', 'Template for project URLs. %s will be replaced with the repo name')
+    projects_list = PathOption('git', 'projects_list', doc='Path to a gitweb-formatted projects.list')
+    projects_base = PathOption('git', 'projects_base', doc='Path to the base of your git projects')
+    projects_url = Option('git', 'projects_url', doc='Template for project URLs. %s will be replaced with the repo name')
 
     def get_repositories(self):
         if not self.projects_list:
