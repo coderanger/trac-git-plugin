@@ -369,6 +369,9 @@ class GitRepository(Repository):
 
         Repository.__init__(self, "git:"+path, self.params, log)
 
+    def __repr__(self):
+        return '<GitRepository %s %s>'%(self.gitrepo, self.params)
+
     def close(self):
         self.git = None
 
@@ -626,6 +629,9 @@ class GitChangeset(Changeset):
         user_ = repos.rlookup_uid(user_) or user_
 
         Changeset.__init__(self, repos, rev=sha, message=msg, author=user_, date=time_)
+
+    def __repr__(self):
+        return '<GitChangeset %r %s>'%(self.repos, self.rev)
 
     def get_properties(self):
         properties = {}
