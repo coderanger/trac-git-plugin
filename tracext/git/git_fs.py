@@ -697,6 +697,9 @@ class GitwebProjectsRepositoryProvider(Component):
 
         for line in open(self.projects_list):
             line = line.strip()
+            name = line
+            if name.endswith('.git'):
+                name = name[:-4]
             repo = {
                 'dir': os.path.join(self.projects_base, line),
                 'type': 'git',
@@ -705,7 +708,5 @@ class GitwebProjectsRepositoryProvider(Component):
             if os.path.exists(description_path):
                 repo['description'] = open(description_path).read().strip()
             if self.projects_url:
-                if line.endswith('.git'):
-                    line = line[:-4]
-                repo['url'] = self.projects_url % line
-            yield repo
+                repo['url'] = self.projects_url % name
+            yield name, repo
